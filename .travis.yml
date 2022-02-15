@@ -1,0 +1,14 @@
+language: node_js
+node_js:
+- '10'
+before_install:
+- npm install -g @angular/cli
+install: npm install
+branches:
+  only:
+  - master
+deploy:
+  provider: heroku
+  app: mini--steam
+  api_key:
+    secure: CCSEoJzWejOzMApHtB5s2owK+6tJJQLzBQmUDoiIVZ9CXg2LtrSbIdFf+R6PjltO/e+ulkazif0QAEjpFZK4Ka91eokdYGd9mw7fOhjKXluzxK30eIDRpO4u2Mtftdovgz1ZgWECWSaq5VL6T6PsLy92Inv2D1hLoI8wY/Rj96f1veSWe/MQG1iGec3t3+AH1yy6b9jscPNMx6BTcsoJ3PPYvMW0NFzcfyKwUkjA8levvTqtl37/matQmnZ73K1k0PPhUENZeC6YzztAFpvtzcadRM4R33gs5RzH42jsU8Z1xup5Omz3WrFpYVAaXnz6QgRAj34fZCgYcP86H+0roPT1nd63e5/YdroFh5UFHa6XUk4ba+J0AHLtxCpt+lkATVnPFGmhH9lIXf6HUmH0ku0+HX9b0haIvU3G5MQZQP1/F+SfoZaLZCylDNZOI3mp5tDP5gDq2j4M9+q/9CsOH+y0lxZTLBoD4Ulz69lF1zNGAGdR5DJCLIiwp+q6DcRICg5IcmgToPJRdEE9Oit7WH967uYdlg/j/90uuYwUu5S0gr+FxoBUSMlLECvkgaiU/XSHJ33Nm38IaazSNskXxIMm1VQadFxMe6VV2aN/50xweHouUmOl8XGQJNfsQT/bAMogSOWRcXwk1o21EO+oJdig7EuW9AWrXCLKco3NPrE=
