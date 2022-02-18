@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { LibgamesComponent } from './libgames/libgames.component';
 import { UsergamesComponent } from './usergames/usergames.component';
+import { DbgamesService } from './dbgames.service'
 
 
 
@@ -17,6 +18,9 @@ import { UsergamesComponent } from './usergames/usergames.component';
   exports: [
     LibgamesComponent,
     UsergamesComponent
+  ],
+  providers: [
+    DbgamesService
   ]
 })
 export class GamesModule { }
