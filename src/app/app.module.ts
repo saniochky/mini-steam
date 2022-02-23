@@ -5,7 +5,6 @@ import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
 import { environment } from '../environments/environment';
 
 import { AppComponent } from './app.component';
-import { GamesModule } from './games/games.module'
 
 @NgModule({
   declarations: [
@@ -15,7 +14,6 @@ import { GamesModule } from './games/games.module'
     BrowserModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
-    GamesModule
   ],
   providers: [],
   bootstrap: [AppComponent]

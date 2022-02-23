@@ -1,9 +1,0 @@
-<p>{{title | titlecase}}</p>
-<div *ngFor="let game of games | async" class="game-card">
-  <div class="game-card_footer card-footer">
-    <p class="card-footer__title">{{game.title}}</p>
-    <p class="card-footer__price">{{game.price}}</p>
-  </div>
-  <p class="game-card__description">{{game.description}}</p>
-  <button class="game-card__button game-card__button_add" data-key="user.key">Add to Library</button>
-</div>
