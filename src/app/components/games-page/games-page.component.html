@@ -1,1 +1,68 @@
-<p>games-page works!</p>
+<div class="container">
+
+  <h2 class="title">Games</h2>
+
+  <div class="search">
+    <h4 class="search__title">Search games</h4>
+    <input class="search__input" placeholder="Search Games" type="text" [(ngModel)]="filters.title" (input)="loadGames()">
+    <button class="search__button">Search</button>
+  </div>
+
+  <h3 class="heading">Featured Games</h3>
+
+  <div class="content">
+
+    <div class="games">
+
+      <div *ngFor="let game of newgms" class="game-card">
+        <div class="game-card_footer card-footer">
+          <p class="card-footer__title">{{game.title}}</p>
+          <p class="card-footer__price">{{game.price}}</p>
+        </div>
+        <p class="game-card__description">{{game.description}}</p>
+
+        <button *ngIf="game.addedToUserGames; else toadd" class="game-card__button game-card__button_added"
+          attr.data-key="{{game.key}}">Added</button>
+        <ng-template #toadd>
+          <button class="game-card__button" attr.data-key="{{game.key}}" (click)="addToUserGames($event)">Add to
+            Library</button>
+        </ng-template>
+      </div>
+
+    </div>
+
+    <div class="filters">
+
+      <h4 class="filter__title">Filter by price</h4>
+      <div class="filter-price">
+        <input class="filter-price__input filter-price__input_hidden min" type='range' min="0" attr.max="{{maxprice}}"
+          step="50" [(ngModel)]="filters.price.min" (change)="validMinMax($event)">
+        <input class="filter-price__input max" type='range' min="0" attr.max="{{maxprice}}" step="50"
+          [(ngModel)]="filters.price.max" (change)="validMinMax($event)">
+      </div>
+
+      <p class="filter-price__value">from {{filters.price.min}} till {{filters.price.max}}</p>
+
+      <h4 class="filter__title">Filter by price</h4>
+      <div class="filter__tag">
+        <input class="filter__tag-checkbox" type="checkbox" [(ngModel)]='filters.genres.indie' name="indie"
+          (change)="loadGames()">
+        <label for="indie" class="filter__tag-name">Indie</label>
+      </div>
+
+      <div class="filter__tag">
+        <input class="filter__tag-checkbox" type="checkbox" [(ngModel)]='filters.genres.action' name="action"
+          (change)="loadGames()">
+        <label for="action" class="filter__tag-name">Action</label>
+      </div>
+
+      <div class="filter__tag">
+        <input class="filter__tag-checkbox" type="checkbox" [(ngModel)]='filters.genres.adventure' name="adventure"
+          (change)="loadGames()">
+        <label for="adventure" class="filter__tag-name">Adventure</label>
+      </div>
+    </div>
+
+  </div>
+
+</div>
