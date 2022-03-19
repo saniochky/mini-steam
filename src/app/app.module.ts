@@ -1,4 +1,6 @@
 import {NgModule} from '@angular/core';
+import {AngularFireModule} from '@angular/fire/compat';
+import {AngularFireDatabaseModule} from '@angular/fire/compat/database';
 import {BrowserModule} from '@angular/platform-browser';
 
 import {AppComponent} from './app.component';
@@ -14,6 +16,8 @@ import {RouterModule, Routes} from "@angular/router";
 import {AuthGuard} from "./guards/auth.guard";
 import {NoAuthGuard} from "./guards/no-auth.guard";
 import {Permissions} from "./services/permissions.service";
+import { environment } from '../environments/environment';
+import { ComponentsModule } from './components/components.module';
 
 const routes: Routes = [
   // { path: 'sign-in', canActivate: [NoAuthGuard], component: SignInComponent },
@@ -37,6 +41,9 @@ const routes: Routes = [
   ],
   imports: [
     BrowserModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireDatabaseModule,
+    ComponentsModule
     FormsModule,
     HttpClientModule,
     RouterModule.forRoot(routes)

@@ -1,0 +1,21 @@
+<div class="container">
+
+  <h2 class="title">My Games</h2>
+
+  <div class="games">
+
+    <div *ngFor="let game of usergames" class="game-card">
+      <div class="game-card_footer card-footer">
+        <p class="card-footer__title">{{game.title}}</p>
+        <p class="card-footer__price">{{game.price}}</p>
+      </div>
+      <p class="game-card__description">{{game.description}}</p>
+      <div class="game-card__buttons">
+        <button class="game-card__button game-card__button_load" attr.data-key="{{game.key}}">Download</button>
+        <button class="game-card__button game-card__button_share" attr.data-key="{{game.key}}">Share</button>
+      </div>
+    </div>
+
+  </div>
+
+</div>
