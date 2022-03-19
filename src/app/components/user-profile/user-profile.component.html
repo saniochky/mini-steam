@@ -1,0 +1,11 @@
+<div class="wrapper">
+<div class="sign-div" *ngIf="ap.isSignedIn">
+   <label for="username" class="label">Change username</label>
+
+   <input type="text" class="input" #usernameChange>
+   <label for="age" class="label">Change age</label>
+
+   <input type="text" class="input" #ageChange>
+   <button (click)="updatingData(usernameChange.value,ageChange.value )">Save changes</button>
+</div>
+</div>

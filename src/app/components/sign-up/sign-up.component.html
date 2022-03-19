@@ -1,0 +1,13 @@
+<div class="wrapper">
+
+   <div class="sign-div" *ngIf="!ap.isSignedIn">
+
+      <h2>Sign up</h2>
+      <label class="label" for="mail">Email</label>
+      <input class="input"placeholder = 'Enter email' type="text" #emailSignup>
+      <label class="label" for="pass">Password</label>
+      <input class="input" placeholder = 'Enter password' type="password" #passwordSignup>
+      <button (click)="onSignup(emailSignup.value, passwordSignup.value)">Sign up</button>
+      <p><a class="link" href="sign-in">Back</a></p>
+   </div>
+</div>
