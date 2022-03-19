@@ -1,0 +1,31 @@
+div {
+  padding: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  border-radius: 4px;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+button {
+  border: none;
+  color: white;
+  padding: 8px 16px;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.25);
+  border-radius: 4px;
+}
+
+span, button {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 16px;
+}
+
+.add {
+  background-color: #6C69FF;
+}
+
+.remove {
+  background-color: #FF6F6F;
+}

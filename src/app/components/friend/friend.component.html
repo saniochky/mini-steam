@@ -1,0 +1,13 @@
+<div>
+  <span>{{ friend.username || friend.email }}</span>
+  <button
+    class="add"
+    *ngIf="!friend.isFriend"
+    (click)="addFriend()"
+  >Add Friend</button>
+  <button
+    class="remove"
+    *ngIf="friend.isFriend"
+    (click)="removeFriend()"
+  >Remove Friend</button>
+</div>

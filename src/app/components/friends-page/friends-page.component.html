@@ -1,0 +1,31 @@
+<app-navbar></app-navbar>
+<app-card>
+  <h2>Friends</h2>
+  <app-friends-search
+    (changedInput)="onChangeInput($event)"
+    (searchFriend)="onSearch()"
+  ></app-friends-search>
+  <h2 *ngIf="status === 'display'">My Friends</h2>
+  <h2 *ngIf="status === 'search'">Search Friends: {{ input }}</h2>
+  <p *ngIf="status === 'display' && friends.length === 0 && !isLoading">You don`t have any friends. Try to search and add some.</p>
+  <p *ngIf="status === 'search' && searchResult.length === 0 && !isLoading">Nothing found</p>
+  <app-loader *ngIf="isLoading"></app-loader>
+  <ng-container *ngIf="status === 'display' && friends.length !== 0 && !isLoading">
+    <app-friend
+      *ngFor="let id of friends"
+      [id]="id"
+      [isFriend]="true"
+      (friendAdded)="onAddFriend($event)"
+      (friendRemoved)="onRemoveFriend($event)"
+    ></app-friend>
+  </ng-container>
+  <ng-container *ngIf="status === 'search' && searchResult.length !== 0 && !isLoading">
+    <app-friend
+      *ngFor="let user of searchResult"
+      [id]="user.id"
+      [isFriend]="user.isFriend"
+      (friendAdded)="onAddFriend($event)"
+      (friendRemoved)="onRemoveFriend($event)"
+    ></app-friend>
+  </ng-container>
+</app-card>
