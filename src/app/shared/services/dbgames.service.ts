@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase, AngularFireList, AngularFireObject } from '@angular/fire/compat/database';
 import { map } from 'rxjs/operators';
-import { Game } from '../models/game.model';
-import { User } from '../models/user.model';
+import { Game } from '../../models/game.model';
+import { User } from '../../models/user.model';
 
 @Injectable({
   providedIn: 'root'
@@ -19,7 +19,7 @@ export class DbgamesService {
   getAllGames(){
     let dbgames = this.db.list('/games');
     return dbgames.snapshotChanges().pipe(
-      map( changes => 
+      map( changes =>
         changes.map(c => {
           return {
             key: c.payload.key,

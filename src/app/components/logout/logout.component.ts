@@ -1,5 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { LoguotService } from '../../services/loguot.service';
+import { LoguotService } from '../../shared/services/loguot.service';
 import { AppComponent } from '../../app.component';
 @Component({
   selector: 'app-logout',
@@ -7,7 +7,7 @@ import { AppComponent } from '../../app.component';
   styleUrls: ['./logout.component.css'],
 })
 export class LogoutComponent implements OnInit {
-  
+
   @Output() isLogout = new EventEmitter<void>();
   constructor(public firebaseService: LoguotService, public ap: AppComponent) {}
 

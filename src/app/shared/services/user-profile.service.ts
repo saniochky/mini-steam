@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { AngularFireDatabase } from '@angular/fire/compat/database';
-import { SignInService } from '../services/sign-in.service';
+import { SignInService } from './sign-in.service';
 
 @Injectable({
   providedIn: 'root',
@@ -54,7 +54,7 @@ export class UserProfileService {
           localPass
         );
         if (res.user) {
-          const uid = res.user.uid; 
+          const uid = res.user.uid;
           const itemRef = this.db.object('users/' + uid);
           itemRef.update({ age: age });
           const token = await res.user.getIdToken();

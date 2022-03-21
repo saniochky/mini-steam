@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { DbgamesService } from '../../shared/dbgames.service';
+import { DbgamesService } from '../../shared/services/dbgames.service';
 import { min, Observable } from 'rxjs';
 import { Game } from '../../models/game.model';
 import { Filter } from '../../models/filter.model';
@@ -96,8 +96,8 @@ export class GamesPageComponent implements OnInit {
     }
 
     let filtered = this.gms.filter((game: Game)=>{
-      return price(game, this.filters.price.min, this.filters.price.max) 
-      && genre(game, this.filters.genres) 
+      return price(game, this.filters.price.min, this.filters.price.max)
+      && genre(game, this.filters.genres)
       && title(game, this.filters.title);
     });
 
@@ -115,6 +115,6 @@ export class GamesPageComponent implements OnInit {
 
   addToUserGames(event: any){
     this.dbservice.addGameToUserGames(event.target.dataset.key);
-    
+
   }
 }

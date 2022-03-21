@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { SignInService } from '../../services/sign-in.service';
+import { SignInService } from '../../shared/services/sign-in.service';
 import { AngularFireDatabase } from '@angular/fire/compat/database';
 import { Observable } from 'rxjs';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
@@ -31,5 +31,5 @@ export class SignInComponent implements OnInit {
     if (this.firebaseService.isLogged) this.ap.isSignedIn = true;
     console.log(this.ap.isSignedIn);
   }
-  
+
 }

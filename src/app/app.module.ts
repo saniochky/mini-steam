@@ -3,7 +3,7 @@ import {AngularFireModule} from '@angular/fire/compat';
 import {AngularFireDatabaseModule} from '@angular/fire/compat/database';
 import {BrowserModule} from '@angular/platform-browser';
 
-import {FirebaseService} from './services/firebase.service';
+import {FirebaseService} from './shared/services/firebase.service';
 import {SignInComponent} from './components/sign-in/sign-in.component';
 import {SignUpComponent} from './components/sign-up/sign-up.component';
 import {UserProfileComponent} from './components/user-profile/user-profile.component';
@@ -20,7 +20,7 @@ import {HttpClientModule} from "@angular/common/http";
 import {RouterModule, Routes} from "@angular/router";
 import {AuthGuard} from "./guards/auth.guard";
 import {NoAuthGuard} from "./guards/no-auth.guard";
-import {Permissions} from "./services/permissions.service";
+import {Permissions} from "./shared/services/permissions.service";
 import {GamesPageComponent} from "./components/games-page/games-page.component";
 import {LibraryPageComponent} from "./components/library-page/library-page.component";
 import {environment} from '../environments/environment';

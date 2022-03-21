@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { DbgamesService } from '../../shared/dbgames.service';
+import { DbgamesService } from '../../shared/services/dbgames.service';
 import { Game } from '../../models/game.model';
 
 @Component({
@@ -15,7 +15,7 @@ export class LibraryPageComponent implements OnInit {
   usergames: Array<Game>;
   constructor(private dbservice: DbgamesService) {
     this.title = 'My games';
-    
+
     this.usergames = [];
     this.gamekeysObs = this.dbservice.getAllUserGameKeys();
 
@@ -38,5 +38,5 @@ export class LibraryPageComponent implements OnInit {
       });
     });
   }
-  
+
 }

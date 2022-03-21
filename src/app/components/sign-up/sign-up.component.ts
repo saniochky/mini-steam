@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { SignUpService } from '../../services/sign-up.service';
+import { SignUpService } from '../../shared/services/sign-up.service';
 import { AngularFireDatabase } from '@angular/fire/compat/database';
 import { Observable } from 'rxjs';
 import { User } from '../../shared/services/user';
@@ -13,7 +13,7 @@ import { AppComponent } from '../../app.component';
 export class SignUpComponent implements OnInit {
   users: Observable<User[]>;
   title = 'mini-steam';
-  
+
   constructor(
     public firebaseService: SignUpService,
     public db: AngularFireDatabase,

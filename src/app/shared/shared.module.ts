@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { DbgamesService } from './dbgames.service'
+import { DbgamesService } from './services/dbgames.service'
 
 
 @NgModule({
