@@ -3,6 +3,12 @@ import {AngularFireModule} from '@angular/fire/compat';
 import {AngularFireDatabaseModule} from '@angular/fire/compat/database';
 import {BrowserModule} from '@angular/platform-browser';
 
+import {FirebaseService} from './services/firebase.service';
+import {SignInComponent} from './components/sign-in/sign-in.component';
+import {SignUpComponent} from './components/sign-up/sign-up.component';
+import {UserProfileComponent} from './components/user-profile/user-profile.component';
+import {LogoutComponent} from './components/logout/logout.component';
+import {AppRoutingModule} from '../app/app-routing/app-routing.module';
 import {AppComponent} from './app.component';
 import {LoaderComponent} from './shared/loader/loader.component';
 import {NavbarComponent} from './shared/navbar/navbar.component';
@@ -16,7 +22,7 @@ import {RouterModule, Routes} from "@angular/router";
 import {AuthGuard} from "./guards/auth.guard";
 import {NoAuthGuard} from "./guards/no-auth.guard";
 import {Permissions} from "./services/permissions.service";
-import { environment } from '../environments/environment';
+import {environment} from '../environments/environment';
 import {GamesPageComponent} from "./components/games-page/games-page.component";
 import {LibraryPageComponent} from "./components/library-page/library-page.component";
 
@@ -33,6 +39,10 @@ const routes: Routes = [
 @NgModule({
   declarations: [
     AppComponent,
+    SignInComponent,
+    SignUpComponent,
+    UserProfileComponent,
+    LogoutComponent,
     LoaderComponent,
     NavbarComponent,
     FriendsPageComponent,
@@ -43,6 +53,8 @@ const routes: Routes = [
     LibraryPageComponent
   ],
   imports: [
+    RouterModule,
+    AppRoutingModule,
     BrowserModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
@@ -50,12 +62,11 @@ const routes: Routes = [
     HttpClientModule,
     RouterModule.forRoot(routes)
   ],
-  providers: [AuthGuard, NoAuthGuard, Permissions],
+  providers: [AuthGuard, NoAuthGuard, Permissions, FirebaseService],
   exports: [
     NavbarComponent,
     CardComponent
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule {
-}
+export class AppModule {}
