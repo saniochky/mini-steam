@@ -21,9 +21,9 @@ import {RouterModule, Routes} from "@angular/router";
 import {AuthGuard} from "./guards/auth.guard";
 import {NoAuthGuard} from "./guards/no-auth.guard";
 import {Permissions} from "./services/permissions.service";
-import {environment} from '../environments/environment';
 import {GamesPageComponent} from "./components/games-page/games-page.component";
 import {LibraryPageComponent} from "./components/library-page/library-page.component";
+import {environment} from '../environments/environment';
 
 const routes: Routes = [
   { path: 'sign-in', canActivate: [NoAuthGuard], component: SignInComponent },
