@@ -17,7 +17,6 @@ import {AuthGuard} from "./guards/auth.guard";
 import {NoAuthGuard} from "./guards/no-auth.guard";
 import {Permissions} from "./services/permissions.service";
 import { environment } from '../environments/environment';
-import { ComponentsModule } from './components/components.module';
 import {GamesPageComponent} from "./components/games-page/games-page.component";
 import {LibraryPageComponent} from "./components/library-page/library-page.component";
 
@@ -39,13 +38,14 @@ const routes: Routes = [
     FriendsPageComponent,
     FriendComponent,
     FriendsSearchComponent,
-    CardComponent
+    CardComponent,
+    GamesPageComponent,
+    LibraryPageComponent
   ],
   imports: [
     BrowserModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
-    ComponentsModule,
     FormsModule,
     HttpClientModule,
     RouterModule.forRoot(routes)
