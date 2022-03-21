@@ -1,18 +1,41 @@
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-import { AngularFireModule } from '@angular/fire/compat';
-import { AppComponent } from './app.component';
-// import { HomeComponent } from './home/home.component';
-import { FirebaseService } from './services/firebase.service';
-import { SignInComponent } from './components/sign-in/sign-in.component';
-import { SignUpComponent } from './components/sign-up/sign-up.component';
-import { UserProfileComponent } from './components/user-profile/user-profile.component';
-import { LogoutComponent } from './components/logout/logout.component';
-// import { DashboardComponent } from './components/dashboard/dashboard.component';
-// import { SignInComponent } from './components/sign-in/sign-in.component';
-// import { SignUpComponent } from './components/sign-up/sign-up.component';
-import { AppRoutingModule } from '../app/app-routing/app-routing.module';
-import { RouterModule } from '@angular/router';
+import {NgModule} from '@angular/core';
+import {AngularFireModule} from '@angular/fire/compat';
+import {AngularFireDatabaseModule} from '@angular/fire/compat/database';
+import {BrowserModule} from '@angular/platform-browser';
+
+import {FirebaseService} from './services/firebase.service';
+import {SignInComponent} from './components/sign-in/sign-in.component';
+import {SignUpComponent} from './components/sign-up/sign-up.component';
+import {UserProfileComponent} from './components/user-profile/user-profile.component';
+import {LogoutComponent} from './components/logout/logout.component';
+import {AppRoutingModule} from '../app/app-routing/app-routing.module';
+import {AppComponent} from './app.component';
+import {LoaderComponent} from './shared/loader/loader.component';
+import {NavbarComponent} from './shared/navbar/navbar.component';
+import {FriendsPageComponent} from './components/friends-page/friends-page.component';
+import {FriendComponent} from './components/friend/friend.component';
+import {FriendsSearchComponent} from './components/friends-search/friends-search.component';
+import {FormsModule} from "@angular/forms";
+import {CardComponent} from './shared/card/card.component';
+import {HttpClientModule} from "@angular/common/http";
+import {RouterModule, Routes} from "@angular/router";
+import {AuthGuard} from "./guards/auth.guard";
+import {NoAuthGuard} from "./guards/no-auth.guard";
+import {Permissions} from "./services/permissions.service";
+import {environment} from '../environments/environment';
+import {GamesPageComponent} from "./components/games-page/games-page.component";
+import {LibraryPageComponent} from "./components/library-page/library-page.component";
+
+const routes: Routes = [
+  // { path: 'sign-in', canActivate: [NoAuthGuard], component: SignInComponent },
+  // { path: 'sign-up', canActivate: [NoAuthGuard], component: SignUpComponent },
+  // { path: 'user-profile', canActivate: [AuthGuard], component: UserProfileComponent },
+  { path: 'friends', canActivate: [AuthGuard], component: FriendsPageComponent },
+  { path: 'games', canActivate: [AuthGuard], component: GamesPageComponent },
+  { path: 'library', canActivate: [AuthGuard], component: LibraryPageComponent },
+  { path: '**', redirectTo: 'friends', pathMatch: 'full' }
+];
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,24 +43,30 @@ import { RouterModule } from '@angular/router';
     SignUpComponent,
     UserProfileComponent,
     LogoutComponent,
-    
+    LoaderComponent,
+    NavbarComponent,
+    FriendsPageComponent,
+    FriendComponent,
+    FriendsSearchComponent,
+    CardComponent,
+    GamesPageComponent,
+    LibraryPageComponent
   ],
   imports: [
     RouterModule,
     AppRoutingModule,
     BrowserModule,
-    AngularFireModule.initializeApp({
-      apiKey: 'AIzaSyDwAtAGHtMDtQtC-uK1s9wXHnkeqmhmbYA',
-      authDomain: 'mini-steam.firebaseapp.com',
-      databaseURL:
-        'https://mini-steam-default-rtdb.europe-west1.firebasedatabase.app',
-      projectId: 'mini-steam',
-      storageBucket: 'mini-steam.appspot.com',
-      messagingSenderId: '6891832047',
-      appId: '1:6891832047:web:35c0f46e4c1601d224911a',
-    }),
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireDatabaseModule,
+    FormsModule,
+    HttpClientModule,
+    RouterModule.forRoot(routes)
   ],
-  providers: [FirebaseService],
-  bootstrap: [AppComponent],
+  providers: [AuthGuard, NoAuthGuard, Permissions, FirebaseService],
+  exports: [
+    NavbarComponent,
+    CardComponent
+  ],
+  bootstrap: [AppComponent]
 })
 export class AppModule {}
