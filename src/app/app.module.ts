@@ -18,14 +18,16 @@ import {NoAuthGuard} from "./guards/no-auth.guard";
 import {Permissions} from "./services/permissions.service";
 import { environment } from '../environments/environment';
 import { ComponentsModule } from './components/components.module';
+import {GamesPageComponent} from "./components/games-page/games-page.component";
+import {LibraryPageComponent} from "./components/library-page/library-page.component";
 
 const routes: Routes = [
   // { path: 'sign-in', canActivate: [NoAuthGuard], component: SignInComponent },
   // { path: 'sign-up', canActivate: [NoAuthGuard], component: SignUpComponent },
   // { path: 'user-profile', canActivate: [AuthGuard], component: UserProfileComponent },
   { path: 'friends', canActivate: [AuthGuard], component: FriendsPageComponent },
-  // { path: 'games', canActivate: [AuthGuard], component: GamesPageComponent },
-  // { path: 'library', canActivate: [AuthGuard], component: LibraryPageComponent },
+  { path: 'games', canActivate: [AuthGuard], component: GamesPageComponent },
+  { path: 'library', canActivate: [AuthGuard], component: LibraryPageComponent },
   { path: '**', redirectTo: 'friends', pathMatch: 'full' }
 ];
 
