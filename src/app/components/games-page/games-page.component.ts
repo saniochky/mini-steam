@@ -44,7 +44,6 @@ export class GamesPageComponent implements OnInit {
     this.dbservice.getAllGames().subscribe(gms => {
       this.gms = gms;
       if(init){
-        console.log("first init");
         this.valueMax();
       }
       this.newgms = this.filterGames();
@@ -52,18 +51,14 @@ export class GamesPageComponent implements OnInit {
       this.dbservice.getAllUserGameKeys().subscribe(
         gamekeys => {
           for(let i = 0; i < gamekeys.length; i++){
-            //console.log("gamekey from logged user: ", gamekeys[i]);
             for(let j = 0; j < this.newgms.length; j++){
-              //console.log("filtered game: ", this.newgms[j]);
               if(this.newgms[j].key === gamekeys[i]){
                 this.newgms[j].addedToUserGames = true;
-                console.log("filtered game.key === gamekey from user", gamekeys[i], this.newgms[j]);
               }
             }
           }
         }
       );
-      // console.log("load games ", this.newgms, this.gms);
     });
   }
 
@@ -116,7 +111,6 @@ export class GamesPageComponent implements OnInit {
         this.filters.price.max = game.price;
       }
     })
-    console.log("summary: max price is " + this.maxprice);
   }
 
   addToUserGames(event: any){

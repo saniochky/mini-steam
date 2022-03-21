@@ -26,8 +26,6 @@ export class LibraryPageComponent implements OnInit {
   }
 
   loadUserGames(){
-    console.log("load user games");
-
     this.usergames = [];
     this.gamekeysObs = this.dbservice.getAllUserGameKeys();
 
