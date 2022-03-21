@@ -51,6 +51,10 @@ const routes: Routes = [
     RouterModule.forRoot(routes)
   ],
   providers: [AuthGuard, NoAuthGuard, Permissions],
+  exports: [
+    NavbarComponent,
+    CardComponent
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {
