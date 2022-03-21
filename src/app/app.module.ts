@@ -8,7 +8,6 @@ import {SignInComponent} from './components/sign-in/sign-in.component';
 import {SignUpComponent} from './components/sign-up/sign-up.component';
 import {UserProfileComponent} from './components/user-profile/user-profile.component';
 import {LogoutComponent} from './components/logout/logout.component';
-import {AppRoutingModule} from './app-routing/app-routing.module';
 import {AppComponent} from './app.component';
 import {LoaderComponent} from './shared/loader/loader.component';
 import {NavbarComponent} from './shared/navbar/navbar.component';
@@ -27,9 +26,9 @@ import {GamesPageComponent} from "./components/games-page/games-page.component";
 import {LibraryPageComponent} from "./components/library-page/library-page.component";
 
 const routes: Routes = [
-  // { path: 'sign-in', canActivate: [NoAuthGuard], component: SignInComponent },
-  // { path: 'sign-up', canActivate: [NoAuthGuard], component: SignUpComponent },
-  // { path: 'user-profile', canActivate: [AuthGuard], component: UserProfileComponent },
+  { path: 'sign-in', canActivate: [NoAuthGuard], component: SignInComponent },
+  { path: 'sign-up', canActivate: [NoAuthGuard], component: SignUpComponent },
+  { path: 'user-profile', canActivate: [AuthGuard], component: UserProfileComponent },
   { path: 'friends', canActivate: [AuthGuard], component: FriendsPageComponent },
   { path: 'games', canActivate: [AuthGuard], component: GamesPageComponent },
   { path: 'library', canActivate: [AuthGuard], component: LibraryPageComponent },
@@ -54,7 +53,6 @@ const routes: Routes = [
   ],
   imports: [
     RouterModule,
-    AppRoutingModule,
     BrowserModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
