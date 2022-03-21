@@ -8,7 +8,7 @@ import {SignInComponent} from './components/sign-in/sign-in.component';
 import {SignUpComponent} from './components/sign-up/sign-up.component';
 import {UserProfileComponent} from './components/user-profile/user-profile.component';
 import {LogoutComponent} from './components/logout/logout.component';
-import {AppRoutingModule} from '../app/app-routing/app-routing.module';
+import {AppRoutingModule} from './app-routing/app-routing.module';
 import {AppComponent} from './app.component';
 import {LoaderComponent} from './shared/loader/loader.component';
 import {NavbarComponent} from './shared/navbar/navbar.component';

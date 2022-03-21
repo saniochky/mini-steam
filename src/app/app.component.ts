@@ -7,7 +7,7 @@ import { User } from './shared/services/user';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css'],
+  styleUrls: ['./app.component.css']
 })
 
 export class AppComponent implements OnInit {
@@ -20,7 +20,7 @@ export class AppComponent implements OnInit {
   ) {
     const users = db.list('users').valueChanges()  as Observable<User[]>;
     console.log('users', users);
-    
+
     this.users = users;
   }
   ngOnInit(): void {
