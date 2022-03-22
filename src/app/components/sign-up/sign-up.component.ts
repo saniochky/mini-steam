@@ -4,6 +4,8 @@ import { AngularFireDatabase } from '@angular/fire/compat/database';
 import { Observable } from 'rxjs';
 import { User } from '../../shared/services/user';
 import { AppComponent } from '../../app.component';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-sign-up',
@@ -17,10 +19,10 @@ export class SignUpComponent implements OnInit {
   constructor(
     public firebaseService: SignUpService,
     public db: AngularFireDatabase,
-    public ap: AppComponent
+    public ap: AppComponent,
+    private router: Router
   ) {
     const users = db.list('users').valueChanges() as Observable<User[]>;
-
 
     this.users = users;
   }
@@ -31,5 +33,6 @@ export class SignUpComponent implements OnInit {
   async onSignup(email: string, password: string) {
     await this.firebaseService.signup(email, password);
     if (this.firebaseService.isLogged) this.ap.isSignedIn = true;
+    await this.router.navigate(['/friends']);
   }
 }

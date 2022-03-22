@@ -6,8 +6,8 @@
       <label for="pass" class="label">Password</label>
       <input type="password" class="input" placeholder="Enter password" #password>
       <button (click)="onSignin(email.value, password.value)">Sign in</button>
-      <div>
-         <p>Dont have an account?</p><a class="link" routerLink="/sign-up">Sign up</a>
+      <div class="registration">
+         <p class="link-wrapper">Dont have an account?</p><a class="link" routerLink="/sign-up">Sign up</a>
       </div>
    </div>
 </div>

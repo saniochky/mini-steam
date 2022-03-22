@@ -26,13 +26,10 @@ export class SignInService {
         const uid = res.user.uid;
         const itemRef = this.db.object('users/' + uid);
         await itemRef.update({ lastlogin: new Date() });
-        const token = await res.user.getIdToken();
-        console.log('token', token);
+       
         localStorage.setItem('id', uid);
         localStorage.setItem('isLogged', 'true')
-      } else {
-        window.alert('Xuinia');
-      }
+      } 
     } catch (error: any) {
       window.alert(error.message);
     }

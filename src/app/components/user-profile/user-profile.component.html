@@ -1,12 +1,13 @@
 <app-navbar></app-navbar>
 <div class="wrapper">
 <div class="sign-div" >
+   <h2>Profile</h2>
    <label for="username" class="label">Change username</label>
 
-   <input type="text" class="input" #usernameChange>
+   <input type="text" placeholder="Username" class="input" #usernameChange>
    <label for="age" class="label">Change age</label>
 
-   <input type="text" class="input" #ageChange>
+   <input type="text" placeholder="Age" class="input" #ageChange>
    <button (click)="updatingData(usernameChange.value,ageChange.value )">Save changes</button>
 </div>
 </div>

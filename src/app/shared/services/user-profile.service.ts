@@ -29,13 +29,9 @@ export class UserProfileService {
             const uid = res.user.uid;
             const itemRef = this.db.object('users/' + uid);
             itemRef.update({ username: username });
-            const token = await res.user.getIdToken();
-            console.log('token', token);
             localStorage.setItem('id', uid);
             localStorage.setItem('isLogged', 'true')
-          } else {
-            window.alert('Xuinia');
-          }
+          } 
         } catch (error: any) {
           window.alert(error.message);
         }
@@ -58,13 +54,9 @@ export class UserProfileService {
           const uid = res.user.uid;
           const itemRef = this.db.object('users/' + uid);
           itemRef.update({ age: age });
-          const token = await res.user.getIdToken();
-          console.log('token', token);
           localStorage.setItem('id', uid);
           localStorage.setItem('isLogged', 'true')
-        } else {
-          window.alert('Xuinia');
-        }
+        } 
       } catch (error: any) {
         window.alert(error.message);
       }
@@ -78,8 +70,6 @@ export class UserProfileService {
       await this.updateAge(age);
     } else if (username) {
       await this.updateUsername(username);
-    } else{
-      console.log('nothing');
-    }
+    } 
   }
 }

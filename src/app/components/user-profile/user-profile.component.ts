@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserProfileService } from '../../shared/services/user-profile.service';
 import { AngularFireDatabase } from '@angular/fire/compat/database';
-import { Observable } from 'rxjs';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
-import { User } from '../../shared/services/user';
 import { AppComponent } from '../../app.component';
 @Component({
   selector: 'app-user-profile',
@@ -24,8 +22,6 @@ export class UserProfileComponent implements OnInit {
   async onChanginUsername(username: string) {
     await this.userProfileService.updateUsername(username);
 
-    // if (this.userProfileService.isLogged) this.ap.isSignedIn = true;
-    // console.log(this.ap.isSignedIn);
   }
   async onChanginAge(age: string) {
     await this.userProfileService.updateAge(age);
