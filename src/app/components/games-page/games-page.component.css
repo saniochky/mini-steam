@@ -2,20 +2,17 @@ body {
   margin: 0px;
   background-color: #e5e5e5;
 }
-.container {
-  width: 1200px;
-  margin: 0 auto;
-  margin-top: 64px;
-  padding: 20px 60px;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  border-radius: 4px;
-}
 .title {
   font-family: 'Roboto', sans-serif;
   font-weight: normal;
   font-size: 24px;
   line-height: 28px;
   margin-bottom: 20px;
+}
+
+.games-container {
+  max-width: 1080px;
+  margin: 0 auto;
 }
 
 .search__title {
@@ -25,9 +22,12 @@ body {
   line-height: 16px;
   margin-bottom: 0;
 }
+.search {
+  width: 100%;
+}
 .search__input {
   height: 28px;
-  width: 997px;
+  width: calc(100% - 87px);
   padding: 0;
   margin-bottom: 20px;
 }
@@ -59,11 +59,11 @@ body {
 }
 
 .games {
-  width: 866px;
+  max-width: 866px;
   display: flex;
   flex-wrap: wrap;
   padding: 5px 10px;
-  justify-content: left;
+  justify-content: center;
 }
 
 .game-card {

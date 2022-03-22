@@ -115,6 +115,5 @@ export class GamesPageComponent implements OnInit {
 
   addToUserGames(event: any){
     this.dbservice.addGameToUserGames(event.target.dataset.key);
-
   }
 }
