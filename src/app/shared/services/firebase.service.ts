@@ -25,7 +25,7 @@ export class FirebaseService {
         itemRef.update({ lastlogin: new Date() });
         const token = await res.user.getIdToken();
         console.log('token', token);
-        localStorage.setItem('user', token);
+        localStorage.setItem('id', token);
       } else {
         window.alert('Xuinia');
       }
@@ -45,9 +45,9 @@ export class FirebaseService {
       if (res.user) {
         this.isLogged = true;
         const uid = res.user.uid;
-        localStorage.setItem('user', JSON.stringify(res.user));
+        localStorage.setItem('id', uid);
         const usersRef = this.db.list('users');
-        usersRef.set(uid, {
+        await usersRef.set(uid, {
           email: email,
           password: password,
           uid: res.user.uid,
@@ -60,8 +60,8 @@ export class FirebaseService {
       window.alert(error.message);
     }
   }
-  logout() {
-    this.firebaseAuth.signOut();
+  async logout() {
+    await this.firebaseAuth.signOut();
     localStorage.removeItem('user');
   }
 }

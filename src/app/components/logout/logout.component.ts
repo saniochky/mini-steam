@@ -1,5 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { LoguotService } from '../../shared/services/loguot.service';
+import { LogoutService } from '../../shared/services/logout.service';
 import { AppComponent } from '../../app.component';
 @Component({
   selector: 'app-logout',
@@ -9,7 +9,7 @@ import { AppComponent } from '../../app.component';
 export class LogoutComponent implements OnInit {
 
   @Output() isLogout = new EventEmitter<void>();
-  constructor(public firebaseService: LoguotService, public ap: AppComponent) {}
+  constructor(public firebaseService: LogoutService, public ap: AppComponent) {}
 
   ngOnInit(): void {
     if (localStorage.getItem('id') !== null) this.ap.isSignedIn = true;

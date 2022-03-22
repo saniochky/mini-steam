@@ -31,7 +31,7 @@ export class UserProfileService {
             itemRef.update({ username: username });
             const token = await res.user.getIdToken();
             console.log('token', token);
-            localStorage.setItem('id', token);
+            localStorage.setItem('id', uid);
             localStorage.setItem('isLogged', 'true')
           } else {
             window.alert('Xuinia');
@@ -60,7 +60,7 @@ export class UserProfileService {
           itemRef.update({ age: age });
           const token = await res.user.getIdToken();
           console.log('token', token);
-          localStorage.setItem('id', token);
+          localStorage.setItem('id', uid);
           localStorage.setItem('isLogged', 'true')
         } else {
           window.alert('Xuinia');
@@ -72,12 +72,12 @@ export class UserProfileService {
   }
   async checkUpdates(username: string, age: string) {
     if (username && age) {
-      this.updateUsername(username);
-      this.updateAge(age);
+      await this.updateUsername(username);
+      await this.updateAge(age);
     } else if (age) {
-      this.updateAge(age);
+      await this.updateAge(age);
     } else if (username) {
-      this.updateUsername(username);
+      await this.updateUsername(username);
     } else{
       console.log('nothing');
     }

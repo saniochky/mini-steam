@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {Router} from "@angular/router";
+import {LogoutService} from "../services/logout.service";
 
 @Component({
   selector: 'app-navbar',
@@ -8,15 +8,13 @@ import {Router} from "@angular/router";
 })
 export class NavbarComponent implements OnInit {
 
-  constructor(private router: Router) { }
+  constructor(public firebaseService: LogoutService) { }
 
   ngOnInit(): void {
   }
 
   async logout() {
-    localStorage.setItem('isLogged', '');
-    localStorage.removeItem('id');
-    await this.router.navigate(['/sign-in']);
+    await this.firebaseService.logout();
   }
 
 }

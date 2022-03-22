@@ -12,7 +12,7 @@ export class NoAuthGuard implements CanActivate {
     if (!this.permissions.canActivate()) {
       return true;
     } else {
-      // this.router.navigate(['user-profile']);
+      this.router.navigate(['/friends']);
       return false;
     }
   }

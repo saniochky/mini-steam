@@ -6,6 +6,7 @@ import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { User } from '../../shared/services/user';
 import{AppComponent} from '../../app.component'
 import { LogoutComponent } from '../logout/logout.component';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-sign-in',
@@ -18,7 +19,8 @@ export class SignInComponent implements OnInit {
     public firebaseAuth: AngularFireAuth,
     public db: AngularFireDatabase,
     public firebaseService: SignInService,
-    public ap: AppComponent
+    public ap: AppComponent,
+    private router: Router
   ) {}
   ngOnInit(): void {
     if (localStorage.getItem('id') !== null) this.ap.isSignedIn = true;
@@ -30,6 +32,7 @@ export class SignInComponent implements OnInit {
 
     if (this.firebaseService.isLogged) this.ap.isSignedIn = true;
     console.log(this.ap.isSignedIn);
+    await this.router.navigate(['/friends']);
   }
 
 }

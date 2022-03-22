@@ -17,7 +17,7 @@ export class SignInService {
         email,
         password
       );
-        
+
       console.log(res.user);
       if (res.user) {
         localStorage.setItem('email', email);
@@ -25,10 +25,10 @@ export class SignInService {
         this.isLogged = true;
         const uid = res.user.uid;
         const itemRef = this.db.object('users/' + uid);
-        itemRef.update({ lastlogin: new Date() });
+        await itemRef.update({ lastlogin: new Date() });
         const token = await res.user.getIdToken();
         console.log('token', token);
-        localStorage.setItem('id', token);
+        localStorage.setItem('id', uid);
         localStorage.setItem('isLogged', 'true')
       } else {
         window.alert('Xuinia');

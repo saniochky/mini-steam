@@ -68,9 +68,11 @@ export class FriendsPageComponent implements OnInit {
   }
 
   getUsers() {
+    const id: string | null = localStorage.getItem('id');
+    console.log(id);
     this.isLoading = true;
     this.http
-      .get<User>(`https://mini-steam-default-rtdb.europe-west1.firebasedatabase.app/users/ghmlCU0pC9MMzObhg2VN2TFdAiy1.json`)
+      .get<User>(`https://mini-steam-default-rtdb.europe-west1.firebasedatabase.app/users/${id}.json`)
       .subscribe(user => {
         this.isLoading = false;
         this.friends = user.hasOwnProperty('friends') ? [...user.friends!.values()] : [];
@@ -78,8 +80,9 @@ export class FriendsPageComponent implements OnInit {
   }
 
   putFriends() {
+    const id: string | null = localStorage.getItem('id');
     this.http
-      .put<string[]>(`https://mini-steam-default-rtdb.europe-west1.firebasedatabase.app/users/ghmlCU0pC9MMzObhg2VN2TFdAiy1/friends.json`, this.friends)
+      .put<string[]>(`https://mini-steam-default-rtdb.europe-west1.firebasedatabase.app/users/${id}/friends.json`, this.friends)
       .subscribe(data => {
         console.log('OK');
       });
