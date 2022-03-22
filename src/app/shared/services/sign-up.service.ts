@@ -37,8 +37,6 @@ export class SignUpService {
           password: password,
           uid: res.user.uid,
         } as User);
-      } else {
-        window.alert('Xuinia');
       }
       console.log(res.user?.uid);
     } catch (error: any) {

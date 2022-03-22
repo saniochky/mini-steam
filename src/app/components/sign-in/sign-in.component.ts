@@ -1,11 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { SignInService } from '../../shared/services/sign-in.service';
 import { AngularFireDatabase } from '@angular/fire/compat/database';
-import { Observable } from 'rxjs';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
-import { User } from '../../shared/services/user';
 import{AppComponent} from '../../app.component'
-import { LogoutComponent } from '../logout/logout.component';
 import {Router} from "@angular/router";
 
 @Component({

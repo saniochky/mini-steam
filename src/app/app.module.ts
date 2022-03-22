@@ -3,7 +3,6 @@ import {AngularFireModule} from '@angular/fire/compat';
 import {AngularFireDatabaseModule} from '@angular/fire/compat/database';
 import {BrowserModule} from '@angular/platform-browser';
 
-import {FirebaseService} from './shared/services/firebase.service';
 import {SignInComponent} from './components/sign-in/sign-in.component';
 import {SignUpComponent} from './components/sign-up/sign-up.component';
 import {UserProfileComponent} from './components/user-profile/user-profile.component';
@@ -60,7 +59,7 @@ const routes: Routes = [
     HttpClientModule,
     RouterModule.forRoot(routes)
   ],
-  providers: [AuthGuard, NoAuthGuard, Permissions, FirebaseService],
+  providers: [AuthGuard, NoAuthGuard, Permissions],
   exports: [
     NavbarComponent,
     CardComponent
