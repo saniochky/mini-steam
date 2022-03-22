@@ -21,12 +21,12 @@ export class SignInComponent implements OnInit {
     public ap: AppComponent
   ) {}
   ngOnInit(): void {
-    if (localStorage.getItem('user') !== null) this.ap.isSignedIn = true;
+    if (localStorage.getItem('id') !== null) this.ap.isSignedIn = true;
     else this.ap.isSignedIn = false;
   }
   async onSignin(email: string, password: string) {
     await this.firebaseService.signin(email, password);
-    console.log(localStorage.getItem('user'));
+    console.log(localStorage.getItem('id'));
 
     if (this.firebaseService.isLogged) this.ap.isSignedIn = true;
     console.log(this.ap.isSignedIn);
