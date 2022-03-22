@@ -25,7 +25,7 @@ export class SignUpComponent implements OnInit {
     this.users = users;
   }
   ngOnInit(): void {
-    if (localStorage.getItem('user') !== null) this.ap.isSignedIn = true;
+    if (localStorage.getItem('id') !== null) this.ap.isSignedIn = true;
     else this.ap.isSignedIn = false;
   }
   async onSignup(email: string, password: string) {
