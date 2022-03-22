@@ -31,7 +31,8 @@ export class UserProfileService {
             itemRef.update({ username: username });
             const token = await res.user.getIdToken();
             console.log('token', token);
-            localStorage.setItem('user', token);
+            localStorage.setItem('id', token);
+            localStorage.setItem('isLogged', 'true')
           } else {
             window.alert('Xuinia');
           }
@@ -59,7 +60,8 @@ export class UserProfileService {
           itemRef.update({ age: age });
           const token = await res.user.getIdToken();
           console.log('token', token);
-          localStorage.setItem('user', token);
+          localStorage.setItem('id', token);
+          localStorage.setItem('isLogged', 'true')
         } else {
           window.alert('Xuinia');
         }
