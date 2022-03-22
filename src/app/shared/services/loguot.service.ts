@@ -15,7 +15,7 @@ export class LoguotService {
   logout() {
     this.firebaseAuth.signOut();
     localStorage.removeItem('id');
-    localStorage.removeItem('isLogged');
+    localStorage['isLogged'] = 'false'
      localStorage.removeItem('email');
      localStorage.removeItem('password');
   }
