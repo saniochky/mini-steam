@@ -48,19 +48,19 @@
     
         <h4 class="filter__title">Filter by price</h4>
         <div class="filter__tag">
-          <input class="filter__tag-checkbox" type="checkbox" [(ngModel)]='filters.genres.indie' name="indie"
+          <input class="filter__tag-checkbox" type="checkbox" [(ngModel)]='filters.genres.indie' name="indie" id="indie"
             (change)="loadGames()">
           <label for="indie" class="filter__tag-name">Indie</label>
         </div>
     
         <div class="filter__tag">
-          <input class="filter__tag-checkbox" type="checkbox" [(ngModel)]='filters.genres.action' name="action"
+          <input class="filter__tag-checkbox" type="checkbox" [(ngModel)]='filters.genres.action' name="action" id="action"
             (change)="loadGames()">
           <label for="action" class="filter__tag-name">Action</label>
         </div>
     
         <div class="filter__tag">
-          <input class="filter__tag-checkbox" type="checkbox" [(ngModel)]='filters.genres.adventure' name="adventure"
+          <input class="filter__tag-checkbox" type="checkbox" [(ngModel)]='filters.genres.adventure' name="adventure" id="adventure"
             (change)="loadGames()">
           <label for="adventure" class="filter__tag-name">Adventure</label>
         </div>
