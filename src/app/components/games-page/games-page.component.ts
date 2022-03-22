@@ -10,7 +10,6 @@ import { Filter } from '../../models/filter.model';
   styleUrls: ['./games-page.component.css']
 })
 export class GamesPageComponent implements OnInit {
-  loggedUserId: string | null;
   filters: Filter;
   maxprice: number;
 
@@ -19,7 +18,6 @@ export class GamesPageComponent implements OnInit {
   filteredGms: any;
 
   constructor(private dbservice: DbgamesService) {
-    this.loggedUserId = localStorage.getItem('id');
     this.maxprice = 0;
     this.filters = {
       title: '',
@@ -33,11 +31,10 @@ export class GamesPageComponent implements OnInit {
         adventure: true
       }
     };
-
-    this.loadGames(true);
    }
 
   ngOnInit(): void {
+    this.loadGames(true);
   }
 
   loadGames(init?: boolean){

@@ -9,9 +9,9 @@ import { User } from '../../models/user.model';
 })
 export class DbgamesService {
 
-  loggedUserId: string | null;
+
   constructor(private db: AngularFireDatabase) {
-    this.loggedUserId = localStorage.getItem('id');
+
   }
 
   getAllGames(){
@@ -31,12 +31,12 @@ export class DbgamesService {
   }
 
   addGameToUserGames(gamekey: string){
-    console.log("add game to user: ", gamekey);
-    let dbgames = this.db.list('/users/'+ this.loggedUserId + '/games');
+    let dbgames = this.db.list('/users/'+ localStorage.getItem('id') + '/games');
     return dbgames.push(gamekey);
   }
 
   getAllUserGameKeys(){
-    return this.db.list('/users/'+ this.loggedUserId + '/games').valueChanges();
+    return this.db.list('/users/'+ localStorage.getItem('id') + '/games').valueChanges();
   }
+  
 }

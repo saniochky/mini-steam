@@ -11,18 +11,17 @@ import { Game } from '../../models/game.model';
 export class LibraryPageComponent implements OnInit {
   title: string;
 
-  gamekeysObs: Observable<any>;
+  gamekeysObs!: Observable<any>;
   usergames: Array<Game>;
   constructor(private dbservice: DbgamesService) {
     this.title = 'My games';
-
     this.usergames = [];
-    this.gamekeysObs = this.dbservice.getAllUserGameKeys();
-
-    this.loadUserGames();
   }
 
   ngOnInit(): void {
+    this.usergames = [];
+    this.gamekeysObs = this.dbservice.getAllUserGameKeys();
+    this.loadUserGames();
   }
 
   loadUserGames(){
