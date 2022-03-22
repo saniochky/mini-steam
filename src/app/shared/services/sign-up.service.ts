@@ -29,7 +29,8 @@ export class SignUpService {
         localStorage.setItem('password', password);
         this.isLogged = true;
         const uid = res.user.uid;
-        localStorage.setItem('user', JSON.stringify(res.user));
+        localStorage.setItem('id', JSON.stringify(res.user));
+        localStorage.setItem('isLogged', 'true')
         const usersRef = this.db.list('users');
         usersRef.set(uid, {
           email: email,
