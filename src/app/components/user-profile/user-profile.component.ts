@@ -18,7 +18,7 @@ export class UserProfileComponent implements OnInit {
     public ap: AppComponent
   ) {}
   ngOnInit(): void {
-    if (localStorage.getItem('user') !== null) this.ap.isSignedIn = true;
+    if (localStorage.getItem('id') !== null) this.ap.isSignedIn = true;
     else this.ap.isSignedIn = false;
   }
   async onChanginUsername(username: string) {
