@@ -12,7 +12,7 @@ export class LogoutComponent implements OnInit {
   constructor(public firebaseService: LoguotService, public ap: AppComponent) {}
 
   ngOnInit(): void {
-    if (localStorage.getItem('user') !== null) this.ap.isSignedIn = true;
+    if (localStorage.getItem('id') !== null) this.ap.isSignedIn = true;
     else this.ap.isSignedIn = false;
   }
   logout() {
