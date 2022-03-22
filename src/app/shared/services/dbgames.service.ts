@@ -8,12 +8,10 @@ import { User } from '../../models/user.model';
   providedIn: 'root'
 })
 export class DbgamesService {
-  //dbgames: AngularFireList<Game>;
 
-  loggedUserId: string;
+  loggedUserId: string | null;
   constructor(private db: AngularFireDatabase) {
-    //this.dbgames = db.list('/games');
-    this.loggedUserId = 'ghmlCU0pC9MMzObhg2VN2TFdAiy1';
+    this.loggedUserId = localStorage.getItem('id');
   }
 
   getAllGames(){

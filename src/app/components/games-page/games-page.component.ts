@@ -10,7 +10,7 @@ import { Filter } from '../../models/filter.model';
   styleUrls: ['./games-page.component.css']
 })
 export class GamesPageComponent implements OnInit {
-  loggedUserId: string;
+  loggedUserId: string | null;
   filters: Filter;
   maxprice: number;
 
@@ -19,7 +19,7 @@ export class GamesPageComponent implements OnInit {
   filteredGms: any;
 
   constructor(private dbservice: DbgamesService) {
-    this.loggedUserId = 'ghmlCU0pC9MMzObhg2VN2TFdAiy1';
+    this.loggedUserId = localStorage.getItem('id');
     this.maxprice = 0;
     this.filters = {
       title: '',
