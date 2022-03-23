@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import { UserProfileService } from '../../shared/services/user-profile.service';
-import { AngularFireDatabase } from '@angular/fire/compat/database';
-import { AngularFireAuth } from '@angular/fire/compat/auth';
-import { AppComponent } from '../../app.component';
+import {Component, OnInit} from '@angular/core';
+import {UserProfileService} from '../../shared/services/user-profile.service';
+import {AngularFireDatabase} from '@angular/fire/compat/database';
+import {AngularFireAuth} from '@angular/fire/compat/auth';
+import {AppComponent} from '../../app.component';
+
 @Component({
   selector: 'app-user-profile',
   templateUrl: './user-profile.component.html',
@@ -14,19 +15,23 @@ export class UserProfileComponent implements OnInit {
     public db: AngularFireDatabase,
     public userProfileService: UserProfileService,
     public ap: AppComponent
-  ) {}
-  ngOnInit(): void {
-    if (localStorage.getItem('id') !== null) this.ap.isSignedIn = true;
-    else this.ap.isSignedIn = false;
+  ) {
   }
+
+  ngOnInit(): void {
+    this.ap.isSignedIn = localStorage.getItem('id') !== null;
+  }
+
   async onChanginUsername(username: string) {
     await this.userProfileService.updateUsername(username);
 
   }
+
   async onChanginAge(age: string) {
     await this.userProfileService.updateAge(age);
   }
-  async updatingData(username: string, age: string){
-    await this.userProfileService.checkUpdates(username, age)
+
+  async updatingData(username: string, age: string) {
+    await this.userProfileService.checkUpdates(username, age);
   }
 }

@@ -1,7 +1,8 @@
-import { Injectable } from '@angular/core';
-import { AngularFireAuth } from '@angular/fire/compat/auth';
-import { AngularFireDatabase } from '@angular/fire/compat/database';
-import { User } from './user';
+import {Injectable} from '@angular/core';
+import {AngularFireAuth} from '@angular/fire/compat/auth';
+import {AngularFireDatabase} from '@angular/fire/compat/database';
+import {User} from './user';
+
 @Injectable({
   providedIn: 'root',
 })
@@ -10,10 +11,12 @@ import { User } from './user';
 })
 export class SignUpService {
   isLogged = false;
+
   constructor(
     public firebaseAuth: AngularFireAuth,
     public db: AngularFireDatabase
-  ) {}
+  ) {
+  }
 
   async signup(email: string, password: string) {
     try {

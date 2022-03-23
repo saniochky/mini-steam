@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {LogoutService} from "../services/logout.service";
 
 @Component({
@@ -8,7 +8,8 @@ import {LogoutService} from "../services/logout.service";
 })
 export class NavbarComponent implements OnInit {
 
-  constructor(public firebaseService: LogoutService) { }
+  constructor(public firebaseService: LogoutService) {
+  }
 
   ngOnInit(): void {
   }

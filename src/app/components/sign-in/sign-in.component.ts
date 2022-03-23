@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { SignInService } from '../../shared/services/sign-in.service';
-import { AngularFireDatabase } from '@angular/fire/compat/database';
-import { AngularFireAuth } from '@angular/fire/compat/auth';
-import{AppComponent} from '../../app.component'
+import {Component, OnInit} from '@angular/core';
+import {SignInService} from '../../shared/services/sign-in.service';
+import {AngularFireDatabase} from '@angular/fire/compat/database';
+import {AngularFireAuth} from '@angular/fire/compat/auth';
+import {AppComponent} from '../../app.component'
 import {Router} from "@angular/router";
 
 @Component({
@@ -18,17 +18,17 @@ export class SignInComponent implements OnInit {
     public firebaseService: SignInService,
     public ap: AppComponent,
     private router: Router
-  ) {}
-  ngOnInit(): void {
-    if (localStorage.getItem('id') !== null) this.ap.isSignedIn = true;
-    else this.ap.isSignedIn = false;
+  ) {
   }
+
+  ngOnInit(): void {
+    this.ap.isSignedIn = localStorage.getItem('id') !== null;
+  }
+
   async onSignin(email: string, password: string) {
     await this.firebaseService.signin(email, password);
-    console.log(localStorage.getItem('id'));
 
     if (this.firebaseService.isLogged) this.ap.isSignedIn = true;
-    console.log(this.ap.isSignedIn);
     await this.router.navigate(['/friends']);
   }
 

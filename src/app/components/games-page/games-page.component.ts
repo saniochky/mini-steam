@@ -1,8 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { DbgamesService } from '../../shared/services/dbgames.service';
-import { min, Observable } from 'rxjs';
-import { Game } from '../../models/game.model';
-import { Filter } from '../../models/filter.model';
+import {Component, OnInit} from '@angular/core';
+import {DbgamesService} from '../../shared/services/dbgames.service';
+import {Game} from '../../models/game.model';
+import {Filter} from '../../models/filter.model';
 
 @Component({
   selector: 'app-games-page',
@@ -31,25 +30,25 @@ export class GamesPageComponent implements OnInit {
         adventure: true
       }
     };
-   }
+  }
 
   ngOnInit(): void {
     this.loadGames(true);
   }
 
-  loadGames(init?: boolean){
+  loadGames(init?: boolean) {
     this.dbservice.getAllGames().subscribe(gms => {
       this.gms = gms;
-      if(init){
+      if (init) {
         this.valueMax();
       }
       this.newgms = this.filterGames();
 
       this.dbservice.getAllUserGameKeys().subscribe(
         (gamekeys: Array<any>) => {
-          for(let i = 0; i < gamekeys.length; i++){
-            for(let j = 0; j < this.newgms.length; j++){
-              if(this.newgms[j].key === gamekeys[i].gamekey){
+          for (let i = 0; i < gamekeys.length; i++) {
+            for (let j = 0; j < this.newgms.length; j++) {
+              if (this.newgms[j].key === gamekeys[i].gamekey) {
                 this.newgms[j].addedToUserGames = true;
               }
             }
@@ -59,58 +58,58 @@ export class GamesPageComponent implements OnInit {
     });
   }
 
-  validMinMax(event: any){
-    if(event.target.classList.contains('min')){
-      if(this.filters.price.min > this.filters.price.max){
+  validMinMax(event: any) {
+    if (event.target.classList.contains('min')) {
+      if (this.filters.price.min > this.filters.price.max) {
         this.filters.price.min = this.filters.price.max;
       }
     } else {
-      if(this.filters.price.min > this.filters.price.max){
+      if (this.filters.price.min > this.filters.price.max) {
         this.filters.price.max = this.filters.price.min;
       }
     }
     this.loadGames();
   }
 
-  filterGames(){
+  filterGames() {
     let price = (el: Game, selectedMinPrice: number, selectedMaxPrice: number) => {
-      if (el.price === undefined){
+      if (el.price === undefined) {
         return false;
       }
       return el.price >= selectedMinPrice && el.price <= selectedMaxPrice;
     };
     let genre = (el: Game, genres: Object) => {
-      let filteredGenresNames = Object.keys(genres).filter((genreName: string)=>{
+      let filteredGenresNames = Object.keys(genres).filter((genreName: string) => {
         return this.filters.genres[genreName] === true;
       });
-      return filteredGenresNames.some((genre)=>{
+      return filteredGenresNames.some((genre) => {
         return genre === el.genre;
       });
     };
-    let title = (el: Game, typedText: string)=>{
+    let title = (el: Game, typedText: string) => {
       let pattern = new RegExp(typedText.toLowerCase());
       return pattern.test(el.title.toLowerCase());
     }
 
-    let filtered = this.gms.filter((game: Game)=>{
+    let filtered = this.gms.filter((game: Game) => {
       return price(game, this.filters.price.min, this.filters.price.max)
-      && genre(game, this.filters.genres)
-      && title(game, this.filters.title);
+        && genre(game, this.filters.genres)
+        && title(game, this.filters.title);
     });
 
     return filtered;
   }
 
-  valueMax(){
-    this.gms.forEach((game: Game)=>{
-      if(game.price && game.price > this.maxprice){
+  valueMax() {
+    this.gms.forEach((game: Game) => {
+      if (game.price && game.price > this.maxprice) {
         this.maxprice = game.price;
         this.filters.price.max = game.price;
       }
     })
   }
 
-  addToUserGames(event: any){
+  addToUserGames(event: any) {
     this.dbservice.addGameToUserGames(event.target.dataset.key);
   }
 }

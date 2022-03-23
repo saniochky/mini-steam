@@ -10,7 +10,8 @@ export class FriendsSearchComponent implements OnInit {
   @Output() searchFriend = new EventEmitter<string>();
   @Output() changedInput = new EventEmitter<string>();
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit(): void {
   }

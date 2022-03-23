@@ -1,10 +1,9 @@
-import { Injectable } from '@angular/core';
-import { AngularFireDatabase, AngularFireList, AngularFireObject } from '@angular/fire/compat/database';
-import { FirebaseOperation } from '@angular/fire/compat/database/interfaces';
-import { map } from 'rxjs/operators';
-import { Game } from '../../models/game.model';
-import { Gamekey } from '../../models/gamekey.model'
-import { User } from '../../models/user.model';
+import {Injectable} from '@angular/core';
+import {AngularFireDatabase} from '@angular/fire/compat/database';
+import {FirebaseOperation} from '@angular/fire/compat/database/interfaces';
+import {map} from 'rxjs/operators';
+import {Game} from '../../models/game.model';
+import {Gamekey} from '../../models/gamekey.model'
 
 @Injectable({
   providedIn: 'root'
@@ -16,10 +15,10 @@ export class DbgamesService {
 
   }
 
-  getAllGames(){
+  getAllGames() {
     let dbgames = this.db.list('/games');
     return dbgames.snapshotChanges().pipe(
-      map( changes =>
+      map(changes =>
         changes.map(c => {
           return {
             key: c.payload.key,
@@ -28,41 +27,41 @@ export class DbgamesService {
         }))
     );
   }
-  
-  getGame(gamekey: string){
+
+  getGame(gamekey: string) {
     return this.db.object('/games/' + gamekey).snapshotChanges().pipe(
       map(changes => {
         const data = changes.payload.val() as Game;
         const key = changes.payload.key;
-        return { key, ...data };
+        return {key, ...data};
       })
     );
   }
 
-  addGameToUserGames(gamekey: string){
-    let dbgames = this.db.list('/users/'+ localStorage.getItem('id') + '/games');
+  addGameToUserGames(gamekey: string) {
+    let dbgames = this.db.list('/users/' + localStorage.getItem('id') + '/games');
     return dbgames.push({gamekey: gamekey});
   }
-  
-  getAllUserGameKeysWithId(){
+
+  getAllUserGameKeysWithId() {
     return this.getUserGames()
-    .snapshotChanges()
-    .pipe(
-      map(changes => changes.map(c => {
-        return { 
-          id: c.payload.key as FirebaseOperation,
-          ...c.payload.val() as Gamekey
-        };   
-      }))
-    )
+      .snapshotChanges()
+      .pipe(
+        map(changes => changes.map(c => {
+          return {
+            id: c.payload.key as FirebaseOperation,
+            ...c.payload.val() as Gamekey
+          };
+        }))
+      )
   }
 
-  getAllUserGameKeys(){
+  getAllUserGameKeys() {
     return this.getUserGames().valueChanges();
   }
 
-  getUserGames(){
-    return this.db.list('/users/'+ localStorage.getItem('id') + '/games');
+  getUserGames() {
+    return this.db.list('/users/' + localStorage.getItem('id') + '/games');
   }
-  
+
 }

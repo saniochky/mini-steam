@@ -1,6 +1,6 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { DbgamesService } from './services/dbgames.service'
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {DbgamesService} from './services/dbgames.service'
 
 
 @NgModule({
@@ -12,4 +12,5 @@ import { DbgamesService } from './services/dbgames.service'
     DbgamesService
   ]
 })
-export class SharedModule { }
+export class SharedModule {
+}
