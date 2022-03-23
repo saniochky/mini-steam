@@ -82,3 +82,7 @@ body {
   border-radius: 4px;
   color: #6C69FF;
 }
+.game-card__button_delete {
+  font-size: 10px;
+  background: #9b9af1;
+}

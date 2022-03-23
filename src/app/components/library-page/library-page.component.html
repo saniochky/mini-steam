@@ -14,6 +14,7 @@
       <div class="game-card__buttons">
         <button class="game-card__button game-card__button_load" attr.data-key="{{game.key}}">Download</button>
         <button class="game-card__button game-card__button_share" attr.data-key="{{game.key}}">Share</button>
+        <button class="game-card__button game-card__button_delete" attr.data-key="{{game.key}}" (click)="deleteFromUserGames($event)">Delete from Library</button>
       </div>
     </div>
 

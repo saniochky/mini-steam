@@ -46,10 +46,10 @@ export class GamesPageComponent implements OnInit {
       this.newgms = this.filterGames();
 
       this.dbservice.getAllUserGameKeys().subscribe(
-        gamekeys => {
+        (gamekeys: Array<any>) => {
           for(let i = 0; i < gamekeys.length; i++){
             for(let j = 0; j < this.newgms.length; j++){
-              if(this.newgms[j].key === gamekeys[i]){
+              if(this.newgms[j].key === gamekeys[i].gamekey){
                 this.newgms[j].addedToUserGames = true;
               }
             }
@@ -80,7 +80,7 @@ export class GamesPageComponent implements OnInit {
       return el.price >= selectedMinPrice && el.price <= selectedMaxPrice;
     };
     let genre = (el: Game, genres: Object) => {
-      let filteredGenresNames = Object.keys(genres).filter((genreName: any)=>{
+      let filteredGenresNames = Object.keys(genres).filter((genreName: string)=>{
         return this.filters.genres[genreName] === true;
       });
       return filteredGenresNames.some((genre)=>{
